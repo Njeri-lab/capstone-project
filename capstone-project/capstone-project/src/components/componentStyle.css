@@ -125,7 +125,7 @@ header p {
 .font-controls button {
   padding: 0.4rem 0.8rem;
   border: none;
-  background: #4a4a8a;
+  background: #1e1e1e;
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -172,6 +172,13 @@ header p {
 .reader h2 {
   margin-top: 60px;
 }
+
+.reader.light,
+.reader.dark,
+.reader.sepia {
+  margin-top: 25px;
+}
+
 /* Responsive Design */
 
 @media (max-width: 500px) {
@@ -221,12 +228,6 @@ header p {
     background: #fffdf7;
     z-index: 1000;
     overflow-y: auto;
-  }
-
-  .reader.light,
-  .reader.dark,
-  .reader.sepia {
-    margin-top: 25px;
   }
 }
 
