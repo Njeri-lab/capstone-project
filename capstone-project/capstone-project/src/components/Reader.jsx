@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function Reader({ book, onBack }) {
   const [page, setPage] = useState(0);
   const [isFullscreen, setisFullscreen] = useState(false);
-  const [fontSize, setFontSize] = useState(18);
+  const [fontSize, setFontSize] = useState(12);
   const [theme, setTheme] = useState("light");
 
   if (!book) {

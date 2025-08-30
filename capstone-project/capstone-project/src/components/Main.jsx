@@ -14,7 +14,6 @@ export const Main = () => {
       </section>
 
       <section>
-        <h2>Reader</h2>
         <Reader book={selectedBook} onBack={() => setSelectedBook(null)} />
       </section>
     </>
