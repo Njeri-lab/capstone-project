@@ -5,6 +5,7 @@ export default function Reader({ book, onBack }) {
   const [page, setPage] = useState(0);
   const [isFullscreen, setisFullscreen] = useState(false);
   const [fontSize, setFontSize] = useState(18);
+  const [theme, setTheme] = useState("light");
 
   if (!book) {
     return (
@@ -28,12 +29,18 @@ export default function Reader({ book, onBack }) {
   };
 
   return (
-    <div className={`reader ${isFullscreen ? "fullscreen" : ""}`}>
+    <div className={`reader ${isFullscreen ? "fullscreen" : ""} ${theme}`}>
       <div className="reader-header">
         <button onClick={onBack}>Back to Library</button>
         <button onClick={() => setisFullscreen(!isFullscreen)}>
           {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
         </button>
+      </div>
+
+      <div className="theme-controls">
+        <button onClick={() => setTheme("light")}>Light</button>
+        <button onClick={() => setTheme("dark")}>Dark</button>
+        <button onClick={() => setTheme("sepia")}>Sepia</button>
       </div>
 
       <div className="font-controls">

@@ -131,3 +131,41 @@ header p {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.reader.light {
+  background: #fffdf7;
+  color: #222;
+}
+
+.reader.dark {
+  background: #1e1e1e;
+  color: #eee;
+}
+
+.reader.sepia {
+  background: #f4ecd8;
+  color: #5b4636;
+}
+
+.theme-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.theme-controls button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #818181;
+}
+
+.reader.dark .theme-controls button {
+  background: #333;
+  color: #eee;
+}
+
+.reader.dark .theme-controls button {
+  background: #e0c9a6;
+}
