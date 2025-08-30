@@ -8,7 +8,7 @@ export const Main = () => {
 
   return (
     <>
-      <section>
+      <section style={{ marginLeft: "30px" }}>
         <h2>Library</h2>
         <BookList onSelect={setSelectedBook} />
       </section>
