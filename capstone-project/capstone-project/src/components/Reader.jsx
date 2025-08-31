@@ -2,9 +2,8 @@ import "./componentStyle.css";
 import { useState } from "react";
 
 export default function Reader({ book, onBack }) {
-  const [page, setPage] = useState(0);
-  const [isFullscreen, setisFullscreen] = useState(false);
-  const [fontSize, setFontSize] = useState(12);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [fontSize, setFontSize] = useState(14);
   const [theme, setTheme] = useState("light");
 
   if (!book) {
@@ -16,23 +15,15 @@ export default function Reader({ book, onBack }) {
     );
   }
 
-  const nextPage = () => {
-    if (page < book.content.length - 1) {
-      setPage(page + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (page > 0) {
-      setPage(page - 1);
-    }
-  };
+  const embedUrl = book.id
+    ? `https://books.google.com/books?id=${book.id}&printsec=frontcover&output=embed`
+    : null;
 
   return (
     <div className={`reader ${isFullscreen ? "fullscreen" : ""} ${theme}`}>
       <div className="reader-header">
         <button onClick={onBack}>Back to Library</button>
-        <button onClick={() => setisFullscreen(!isFullscreen)}>
+        <button onClick={() => setIsFullscreen(!isFullscreen)}>
           {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
         </button>
       </div>
@@ -44,31 +35,40 @@ export default function Reader({ book, onBack }) {
       </div>
 
       <div className="font-controls">
-        <button onClick={() => setFontSize((size) => size - 2)}>A-</button>
+        <button onClick={() => setFontSize((size) => Math.max(10, size - 2))}>
+          A-
+        </button>
         <span>{fontSize}</span>
         <button onClick={() => setFontSize((size) => size + 2)}>A+</button>
       </div>
 
       <h2>{book.title}</h2>
       <p>
-        <em>{book.author}</em>
+        <em>{book.authors?.join(", ") || "Unknown Author"}</em>
       </p>
 
       <div className="book-content" style={{ fontSize: `${fontSize}px` }}>
-        <p>{book.content[page]}</p>
+        <p>{book.description || "No description available."}</p>
       </div>
 
-      <div className="reader-controls">
-        <button onClick={prevPage} disabled={page === 0}>
-          Previous
-        </button>
-        <span>
-          Page {page + 1} of {book.content.length}
-        </span>
-        <button onClick={nextPage} disabled={page === book.content.length}>
-          Next
-        </button>
-      </div>
+      {embedUrl ? (
+        <iframe
+          src={embedUrl}
+          title="Book Preview"
+          width="100%"
+          height="600px"
+          style={{ border: "none", marginTop: "20px" }}
+        />
+      ) : (
+        <p>
+          No preview available.{" "}
+          {book.infoLink && (
+            <a href={book.infoLink} target="_blank" rel="noreferrer">
+              More Info
+            </a>
+          )}
+        </p>
+      )}
     </div>
   );
 }

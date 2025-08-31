@@ -7,12 +7,14 @@
 header {
   color: #222;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 header p {
   margin-left: 25px;
+  font-weight: bold;
+  font-size: 35px;
 }
 
 .sign-in {
@@ -40,11 +42,12 @@ header p {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .book-card {
   width: 130px;
-  height: 200px;
+  height: auto;
   text-align: center;
   background: #f8d99f;
   border-radius: 10px;
@@ -177,6 +180,21 @@ header p {
 .reader.dark,
 .reader.sepia {
   margin-top: 25px;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #666;
 }
 
 /* Responsive Design */

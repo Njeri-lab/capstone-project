@@ -5,9 +5,6 @@ const Header = () => {
     <>
       <header className="header">
         <p>LIORA</p>
-        <div>
-          <button className="sign-in">Sign In</button>
-        </div>
       </header>
     </>
   );
