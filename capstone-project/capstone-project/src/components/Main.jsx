@@ -2,6 +2,7 @@ import "./componentStyle.css";
 import { useState } from "react";
 import BookList from "./BookList";
 import Reader from "./Reader";
+import ReadingNow from "./ReadingNow";
 
 export const Main = () => {
   const [selectedBook, setSelectedBook] = useState(null);
@@ -48,6 +49,7 @@ export const Main = () => {
           </button>
         </form>
 
+        <ReadingNow />
         <BookList onSelect={setSelectedBook} query={query} />
       </section>
 
